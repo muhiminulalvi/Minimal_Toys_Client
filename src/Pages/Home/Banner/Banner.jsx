@@ -4,10 +4,10 @@ const Banner = () => {
     <div
       className="hero min-h-[600px] my-3"
       style={{
-        backgroundImage: `url("../../../../src/assets/asset 21.png")`,
+        backgroundImage: `url("https://images.unsplash.com/photo-1587292818536-5a404595dd36")`
       }}
     >
-      <div className="hero-overlay bg-opacity-40 rounded-sm"></div>
+      <div className="hero-overlay bg-opacity-60 rounded-sm"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-lg">
           <h1 className="mb-5 text-5xl font-bold">The Minimal Toys</h1>
