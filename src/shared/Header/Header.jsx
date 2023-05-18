@@ -67,7 +67,7 @@ const Header = () => {
                 <Link to="">My Toys</Link>
               </li>
               <li>
-                <Link to="">Add A Toy</Link>
+                <Link to="/addtoy">Add A Toy</Link>
               </li>
             </div>
           ) : (
@@ -87,9 +87,9 @@ const Header = () => {
             >
               <div className="w-10 ">
                 {user.photoURL ? (
-                  <img src={user?.photoURL} alt="" className="rounded-full" />
+                  <img src={`${user?.photoURL}`} alt="" className="rounded-full" />
                 ) : (
-                  <FaUserShield size={50} color="#ff3811"/>
+                  <FaUserShield size={30} color="#ff3811"/>
                 )}
               </div>
             </label>
