@@ -3,14 +3,19 @@ import ToyCard from "../ToyCard/ToyCard";
 
 const AvailableToy = () => {
   const [toys, setToys] = useState([]);
+  const [openTab, setOpenTab] = useState("regular");
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch(`http://localhost:5000/toys/${openTab}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
       });
-  }, []);
+  }, [openTab]);
+
+  const handleTabClick = (tabName) => {
+    setOpenTab(tabName);
+  };
   return (
     <div className="py-16">
       <div className="text-center space-y-3 py-4">
@@ -19,15 +24,36 @@ const AvailableToy = () => {
           See Our Awesome Toy Cars & Purchase!
         </p>
       </div>
-      <div className="tabs justify-center text-center font-bold ">
-        <button className="tab text-xl">Sport Cars</button>
-        <button className="tab text-xl">Regular Cars</button>
-        <button className="tab text-xl">Trucks</button>
+      <div className="tabs justify-center text-center font-bold py-4">
+        <button
+          onClick={() => handleTabClick("racing")}
+          className={`tab racing ${
+            openTab == "racing" ? "btn btn-primary rounded-sm text-xl text-white" : " btn btn-warning rounded-sm"
+          }`}
+        >
+          Racing
+        </button>
+        <button
+          onClick={() => handleTabClick("regular")}
+          className={`tab tegular ${
+            openTab == "regular" ? "btn btn-primary rounded-sm text-xl text-white" : " btn btn-warning rounded-sm"
+          }`}
+        >
+          Regular
+        </button>
+        <button
+          onClick={() => handleTabClick("trucks")}
+          className={`tab trucks ${
+            openTab == "trucks" ? "btn btn-primary rounded-sm text-xl text-white" : " btn btn-warning rounded-sm"
+          }`}
+        >
+          Trucks
+        </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center gap-y-6">
-        {toys.map((toy) => 
+        {toys.map((toy) => (
           <ToyCard toy={toy} key={toy._id}></ToyCard>
-        )}
+        ))}
       </div>
     </div>
   );
