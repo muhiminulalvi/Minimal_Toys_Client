@@ -1,5 +1,5 @@
 const ToyCard = ({ toy }) => {
-  const { product_id, picture, name, description, price, rating } = toy;
+  const { picture, name, price, rating } = toy || {};
   return (
     <div className="card w-96 bg-base-100 shadow-xl mx-auto">
       <figure className="">
