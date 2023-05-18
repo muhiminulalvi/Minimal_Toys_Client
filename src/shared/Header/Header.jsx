@@ -36,8 +36,8 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl font-bold">
-          <FaBattleNet size={40} /> Minimal TOYS
+        <Link to="/" className="btn btn-ghost normal-case text-3xl font-extrabold text-primary">
+          <FaBattleNet size={60} /> Minimal TOYS
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

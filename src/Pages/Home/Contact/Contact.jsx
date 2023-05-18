@@ -10,7 +10,7 @@ import {
 
 const Contact = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5 px-5">
+    <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5 px-5 my-7">
       <div className="space-y-4 py-4">
         <h2 className="text-5xl font-bold text-primary">Get In Touch</h2>
         <p className="text-xl font-medium">
@@ -78,6 +78,9 @@ const Contact = () => {
             <span className="label-text text-white">Message</span>
           </label>
           <textarea name="" id="" placeholder="Your Messages" rows="05" className="w-full border-2 py-1 px-1 rounded"></textarea>
+        </div>
+        <div className="form-control py-3">
+          <input type="submit" value="Send Message" className="btn btn-warning font-bold"/>
         </div>
         
         </form>
