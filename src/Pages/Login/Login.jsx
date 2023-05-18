@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import RegisterBanner from '../../assets/toy123.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const {logIn} = useContext(AuthContext)
+    const {logIn, googleLogIn} = useContext(AuthContext)
+    const googleAuth = new GoogleAuthProvider()
 
     const handleLogIn = (event) =>{
         event.preventDefault()
@@ -20,6 +22,18 @@ const Login = () => {
         })
         .catch(err => console.log(err))
     }
+
+    const clickGoogle = () =>{
+        googleLogIn(googleAuth)
+        .then(result => {
+          const loggedUser = result.user;
+          console.log(loggedUser);
+
+        })
+        .catch(err => {
+          console.log(err.message);
+        })
+      }
 
   return (
     <>
@@ -78,7 +92,7 @@ const Login = () => {
           </form>
           <div className='py-3 px-5 text-center text-white font-bold space-y-3'>
             <h2>or</h2>
-            <button className='btn btn-warning w-full font-bold '> <span>Login with GOOGLE</span></button>
+            <button className='btn btn-warning w-full font-bold ' onClick={clickGoogle}>Login with GOOGLE</button>
 
           </div>
           <div className='py-3 px-5 text-center text-white font-bold'>

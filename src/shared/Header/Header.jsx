@@ -83,11 +83,11 @@ const Header = () => {
           <div className="flex flex-row items-center gap-5">
             <label
               className="tooltip"
-              data-tip={`Hi! ${user.displayName ? user.displayName : ""}`}
+              data-tip={`${user.displayName ? user.displayName : ""}`}
             >
-              <div>
+              <div className="w-10 ">
                 {user.photoURL ? (
-                  <img src={user?.photoURL} alt="" />
+                  <img src={user?.photoURL} alt="" className="rounded-full" />
                 ) : (
                   <FaUserShield size={50} color="#ff3811"/>
                 )}

@@ -5,6 +5,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 
@@ -25,6 +26,12 @@ const AuthProvider = ({ children }) => {
   const logIn = (email, password) => {
     setSpinner(true)
     return signInWithEmailAndPassword(auth, email, password)
+  }
+
+  // google auth
+  const googleLogIn = (provider) => {
+    setSpinner(true)
+    return signInWithPopup(auth, provider)
   }
 
   // logout User
@@ -49,7 +56,8 @@ const AuthProvider = ({ children }) => {
     spinner,
     createUser,
     logIn,
-    logOut
+    logOut,
+    googleLogIn
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
