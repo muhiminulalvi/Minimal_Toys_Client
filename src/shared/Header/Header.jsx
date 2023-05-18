@@ -1,6 +1,16 @@
-import { FaBattleNet } from "react-icons/fa";
+import { useContext } from "react";
+import { FaBattleNet, FaUserShield } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="navbar py-4 my-4">
       <div className="navbar-start ">
@@ -36,7 +46,10 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-3xl font-extrabold text-primary">
+        <Link
+          to="/"
+          className="btn btn-ghost normal-case text-2xl font-extrabold text-primary"
+        >
           <FaBattleNet size={60} /> Minimal TOYS
         </Link>
       </div>
@@ -48,13 +61,50 @@ const Header = () => {
           <li>
             <Link to="/alltoy">All Toys</Link>
           </li>
+          {user ? (
+            <div className="flex">
+              <li>
+                <Link to="">My Toys</Link>
+              </li>
+              <li>
+                <Link to="">Add A Toy</Link>
+              </li>
+            </div>
+          ) : (
+            <></>
+          )}
           <li>
             <Link to="/blog">Blog</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login' className="btn btn-primary text-white rounded-md font-bold">Login</Link>
+        {user ? (
+          <div className="flex flex-row items-center gap-5">
+            <label
+              className="tooltip"
+              data-tip={`Hi! ${user.displayName ? user.displayName : ""}`}
+            >
+              <div>
+                {user.photoURL ? (
+                  <img src={user?.photoURL} alt="" />
+                ) : (
+                  <FaUserShield size={50} color="#ff3811"/>
+                )}
+              </div>
+            </label>
+            <button className="btn btn-primary text-white font-bold" onClick={handleLogOut}>
+              Log Out
+            </button>
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            className="btn btn-primary text-white rounded-md font-bold"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

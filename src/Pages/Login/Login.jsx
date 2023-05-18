@@ -1,7 +1,26 @@
 import { Link } from 'react-router-dom';
 import RegisterBanner from '../../assets/toy123.svg'
+import { useContext } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
+    const {logIn} = useContext(AuthContext)
+
+    const handleLogIn = (event) =>{
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log( email, password);
+
+        logIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(err => console.log(err))
+    }
+
   return (
     <>
       <div
@@ -22,9 +41,9 @@ const Login = () => {
             <img src={RegisterBanner} alt="" className='w-96 h-96 mx-auto'/>
         </div>
         <div className='py-7 px-6 shadow-xl bg-primary rounded-md'>
-          <form className=' py-3 px-5 text-white'>
+          <form className=' py-3 px-5 ' onSubmit={handleLogIn}>
             <div className='py-3'>
-                <h2 className='text-3xl font-bold text-center'>Please Login!</h2>
+                <h2 className='text-3xl font-bold text-white text-center'>Please Login!</h2>
             </div>
             
             <div className="form-control">
@@ -32,6 +51,7 @@ const Login = () => {
                 <span className="label-text font-bold text-white">Email</span>
               </label>
               <input
+              name='email'
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -45,6 +65,7 @@ const Login = () => {
                 <span className="label-text font-bold text-white">Password</span>
               </label>
               <input
+              name='password'
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
