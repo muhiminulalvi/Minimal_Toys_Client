@@ -32,23 +32,52 @@ const MyToy = () => {
             })
         }
       }
+
+      const updateToy = data => {
+        console.log(data);
+        // const proceed = confirm("Want to update?")
+        // if(proceed){
+        //     fetch(`http://localhost:5000/myToys/${id}`,{
+        //         method: 'PATCH',
+        //         headers: {
+        //             'content-type': 'application/json'
+        //         },
+        //         body: JSON.stringify({status: 'update'})
+        //     })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         if(data.modifiedCount > 0){
+        //             alert("Modified Successfully")
+        //             const remaining = myToys.filter(myToy => myToy._id !== id)
+        //             const updatedToy = myToys.find(myToy => myToy._id === id)
+        //             updateToy.status = 'update'
+        //             const newToys = [updatedToy, ...remaining]
+
+        //             setMyToys(newToys)
+        //         }
+        //     })
+            
+        // }
+      }
     return (
         <div>
             <div className="py-7 my-8">
         <table className="table-normal mx-auto w-3/4 ">
           <thead className="text-white font-bold text-2xl bg-primary text-left">
             <tr>
-              <th></th>
+              <th>Sl. No.</th>
               <th>Image</th>
               <th>Toy Name</th>
               <th>Category</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Status</th>
+              <th></th>
             </tr>
           </thead>
             {
-                myToys.map(singleToy => <MyToyDetails key={singleToy._id} singleToy={singleToy} deleteToy={deleteToy}></MyToyDetails>)
+                myToys.map((singleToy, index) => <MyToyDetails key={singleToy._id} singleToy={singleToy} deleteToy={deleteToy} updateToy={updateToy} index={index}></MyToyDetails>)
             }
           
         </table>
