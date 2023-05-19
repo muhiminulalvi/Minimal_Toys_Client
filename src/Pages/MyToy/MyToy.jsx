@@ -6,6 +6,7 @@ import MyToyDetails from "../MyToyDetails/MyToyDetails";
 const MyToy = () => {
     const {user} = useContext(AuthContext)
     const [myToys, setMyToys]= useState([])
+    const [control, setControl] = useState(false)
 
     const url = `http://localhost:5000/myToys?email=${user?.email}`
 
@@ -13,7 +14,7 @@ const MyToy = () => {
         fetch(url)
         .then(res => res.json())
         .then(data => setMyToys(data))
-    },[url])
+    },[url, control])
 
     const deleteToy = id => {
         const proceed = confirm("Want to delete?")
@@ -35,18 +36,21 @@ const MyToy = () => {
 
       const updateToy = data => {
         console.log(data);
-        // const proceed = confirm("Want to update?")
-        // if(proceed){
-        //     fetch(`http://localhost:5000/myToys/${id}`,{
-        //         method: 'PATCH',
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //         body: JSON.stringify({status: 'update'})
-        //     })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
+    
+
+            fetch(`http://localhost:5000/myToys/${data?._id}`,{
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    setControl(!control);
+                  }
+                console.log(data);})
         //         if(data.modifiedCount > 0){
         //             alert("Modified Successfully")
         //             const remaining = myToys.filter(myToy => myToy._id !== id)
@@ -58,7 +62,7 @@ const MyToy = () => {
         //         }
         //     })
             
-        // }
+
       }
     return (
         <div>

@@ -112,7 +112,7 @@ const MyToyDetails = ({ singleToy, index, deleteToy, updateToy }) => {
                   />
                   <select
                     className="input input-bordered w-1/4"
-                    value={category}
+                    defaultValue={category}
                     {...register("category")}
                   >
                     <option value="racing">Racing Car</option>
