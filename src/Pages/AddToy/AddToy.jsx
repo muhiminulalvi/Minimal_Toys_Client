@@ -4,14 +4,32 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
+  // console.log(user);
 
   const {
     register,
     handleSubmit,
-    // watch,
+    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const formData = {
+      ...data,
+      seller_name: user?.displayName || "",
+      email: user?.email || "",
+    };
+    console.log(formData);
+    fetch("http://localhost:5000/addtoy", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+    // console.log(data)
+  };
   return (
     <>
       <div
@@ -54,14 +72,17 @@ const AddToy = () => {
               {...register("seller_name")}
               placeholder="Seller Name"
               type="text"
-              value={user?.displayName}
+              defaultValue={user?.displayName}
+              disabled
             />
             <input
               className="input input-bordered w-1/2"
+              defaultValue={user?.email}
               {...register("email")}
               placeholder="Seller Email"
               type="email"
-              value={user?.email}
+              disabled
+              
             />
           </div>
           <div className="flex items-center gap-4 font-bold">
