@@ -64,7 +64,7 @@ const Header = () => {
           {user ? (
             <div className="flex">
               <li>
-                <Link to="">My Toys</Link>
+                <Link to="/mytoys">My Toys</Link>
               </li>
               <li>
                 <Link to="/addtoy">Add A Toy</Link>

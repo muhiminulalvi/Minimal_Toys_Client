@@ -6,12 +6,14 @@ const AvailableToy = () => {
   const [openTab, setOpenTab] = useState("regular");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${openTab}`)
+    fetch(`http://localhost:5000/categoryToys/${openTab}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
+        console.log(data);
       });
   }, [openTab]);
+
 
   const handleTabClick = (tabName) => {
     setOpenTab(tabName);
@@ -35,7 +37,7 @@ const AvailableToy = () => {
         </button>
         <button
           onClick={() => handleTabClick("regular")}
-          className={`tab tegular ${
+          className={`tab regular ${
             openTab == "regular" ? "btn btn-primary rounded-sm text-xl text-white" : " btn btn-warning rounded-sm"
           }`}
         >
