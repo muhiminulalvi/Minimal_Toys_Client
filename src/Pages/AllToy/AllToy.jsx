@@ -4,6 +4,7 @@ import AllToyTable from "./AllToyTable";
 
 const AllToy = () => {
   const { user } = useContext(AuthContext);
+  const [searchToyName, setSearchToyName] = useState("");
   const [allToy, setAllToy] = useState([]);
 
   useEffect(() => {
@@ -11,6 +12,15 @@ const AllToy = () => {
       .then((res) => res.json())
       .then((data) => setAllToy(data));
   }, []);
+
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/getToysByText/${searchToyName}`)
+      .then((res) => res.json())
+      .then((data) => {
+        
+        setAllToy(data);
+      });
+  };
 
   return (
     <div className="space-y-8">
@@ -28,6 +38,15 @@ const AllToy = () => {
         </div>
       </div>
       <div className="py-7 my-8">
+      <div className="search-box p-2 text-center">
+          <input
+            onChange={(e) => setSearchToyName(e.target.value)}
+            type="text"
+            placeholder="Search Toy Name"
+            className="input input-bordered font-bold"
+          />{" "}
+          <button onClick={handleSearch} className="btn btn-primary text-white">Search</button>
+        </div>
         <table className="table-normal mx-auto w-3/4 ">
           <thead className="text-white font-bold text-2xl bg-primary text-left">
             <tr>
