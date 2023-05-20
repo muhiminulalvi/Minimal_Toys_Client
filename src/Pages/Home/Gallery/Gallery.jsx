@@ -1,4 +1,16 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Gallery = () => {
+  AOS.init(
+    {
+      duration: 200, // Animation duration in milliseconds
+      offset: 200, // Offset (in pixels) from the original trigger point
+      easing: 'ease', // Animation easing
+      delay: 0, // Delay between each animation
+      once: true, // Only animate elements once
+      mirror: false, // Reflect animations when scrolling in reverse
+    }
+  );
   return (
     <div className="px-10 py-16">
       <div className="text-center space-y-3 py-4">
@@ -7,7 +19,7 @@ const Gallery = () => {
           See Our Stunning Gallery Images and More!
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-evenly pt-7 gap-x-5">
+      <div data-aos="fade-left" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-evenly pt-7 gap-x-5">
         <img src="https://images.pexels.com/photos/2767817/pexels-photo-2767817.jpeg" alt="" className="w-full h-96 rounded-md shadow-xl mb-7"/>
         <img src="https://images.pexels.com/photos/163696/toy-car-toy-box-mini-163696.jpeg" alt="" className="w-full h-96 rounded-md shadow-xl mb-7"/>
         <img src="https://images.pexels.com/photos/12956005/pexels-photo-12956005.jpeg" alt="" className="w-full h-96 rounded-md shadow-xl mb-7"/>
