@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const AllToyTable = ({ toy, index }) => {
   const { user } = useContext(AuthContext);
+  // destructuring toy
   const { _id,toy_name, category, seller_name, price, quantity } = toy || {};
   
   return (
     <tbody>
-      {/* row 1 */}
       <tr className="font-bold uppercase">
         <th>{index + 1}</th>
         <td>

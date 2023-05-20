@@ -7,7 +7,7 @@ const Footer = () => {
     <div>
       <div>
         <footer className="footer p-10 bg-gray-50 items-center">
-          <div>
+          <div className="space-y-2">
             
             <h1 className="text-3xl text-primary font-extrabold flex items-center"><FaBattleNet size={60}/> <span>Minimal Toys</span></h1>
             <p className="font-medium">
@@ -15,6 +15,7 @@ const Footer = () => {
               <br />
               Providing reliable TOys since 2013
             </p>
+            <p className="font-medium">Sordarpara, Park More, Rangpur, Bangladesh</p>
           </div>
           <div>
             <span className="text-xl text-primary font-bold">Pages</span>

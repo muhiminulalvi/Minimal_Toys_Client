@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 const AllToy = () => {
   const [searchingToyName, set_SearchToy_Name] = useState("");
   const [allToy, setAllToy] = useState([]);
+  // use the state for searching the toy name
   const [filteredToy, setFilteredToy] = useState([]);
 
   useEffect(() => {
+    // limit up to 20 
     fetch(
       "https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/toys?limit=20"
     )
@@ -18,6 +20,7 @@ const AllToy = () => {
       });
   }, []);
 
+  // use for search function
   const handleSearch = () => {
     const searchedToy = allToy.filter((toy) =>
       toy.toy_name.toLowerCase().includes(searchingToyName.toLowerCase()));
