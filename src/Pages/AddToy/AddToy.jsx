@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import PageTitle from "../../shared/PageTitle/PageTitle";
 
 
 const AddToy = () => {
@@ -45,6 +46,7 @@ const AddToy = () => {
   };
   return (
     <>
+    <PageTitle title="Add Toy Page"/>
       <div
         className="hero min-h-[200px] rounded-md"
         style={{

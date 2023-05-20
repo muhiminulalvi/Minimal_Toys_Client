@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import RegisterBanner from "../../assets/toy123.svg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import PageTitle from "../../shared/PageTitle/PageTitle";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
@@ -40,6 +41,7 @@ const Register = () => {
   };
   return (
     <>
+    <PageTitle title="Register Page"/>
       <div
         className="hero min-h-[200px] rounded-md"
         style={{
@@ -97,7 +99,7 @@ const Register = () => {
               </label>
               <input
                 name="photoURL"
-                type="text"
+                type="url"
                 placeholder="photo url"
                 className="input input-bordered"
                 required

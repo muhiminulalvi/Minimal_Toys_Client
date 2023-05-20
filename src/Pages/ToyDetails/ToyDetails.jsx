@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router-dom";
+import PageTitle from "../../shared/PageTitle/PageTitle";
 
 const ToyDetails = () => {
   const detailData = useLoaderData();
   const { seller_name, email, toy_name,image, quantity, price, category, description, ratings } = detailData;
   return (
     <div>
+      <PageTitle title="Toy Details Page"/>
       <div
         className="hero min-h-[300px] rounded-md w-full mx-auto my-7"
         style={{

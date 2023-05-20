@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import AllToyTable from "./AllToyTable";
+import PageTitle from "../../shared/PageTitle/PageTitle";
 
 const AllToy = () => {
   const { user } = useContext(AuthContext);
@@ -24,6 +25,7 @@ const AllToy = () => {
 
   return (
     <div className="space-y-8">
+      <PageTitle title="All Toy"/>
       <div
         className="hero min-h-[200px] rounded-md w-3/4 mx-auto"
         style={{

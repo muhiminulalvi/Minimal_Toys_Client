@@ -3,6 +3,7 @@ import RegisterBanner from '../../assets/toy123.svg'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import PageTitle from '../../shared/PageTitle/PageTitle';
 
 const Login = () => {
     const {logIn, googleLogIn} = useContext(AuthContext)
@@ -49,6 +50,7 @@ const Login = () => {
 
   return (
     <>
+    <PageTitle title="Login Page"/>
       <div
         className="hero min-h-[200px] rounded-md"
         style={{

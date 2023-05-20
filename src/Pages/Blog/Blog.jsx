@@ -1,6 +1,9 @@
+import PageTitle from "../../shared/PageTitle/PageTitle";
+
 const Blog = () => {
   return (
     <div>
+      <PageTitle title="Blog Page"/>
         <div className="text-center text-primary space-y-4 py-14">
             <h2 className="font-bold text-5xl">Our Blogs</h2>
             <p className="font-medium">See Our Latest Blogs From The Experts</p>
