@@ -22,7 +22,7 @@ const Register = () => {
 
     // password testing and give errors if password is less than 8 character
     if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-      setError("Password Length should be 8 character");
+      setError("Password Length should be 8 character with number uppercase and lowercase");
       return;
     } else {
       setError("")
