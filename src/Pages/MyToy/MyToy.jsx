@@ -17,17 +17,22 @@ const MyToy = () => {
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [url, control]);
-
+  // delete toy function
   const deleteToy = (id) => {
+    // confirmation
     const proceed = confirm("Want to delete?");
     if (proceed) {
-      fetch(`https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           if (data.deletedCount > 0) {
+            // sweet alert
             Swal.fire("Deleted!", "The toy has been deleted.", "success");
             const remaining = myToys.filter((myToy) => myToy._id !== id);
             setMyToys(remaining);
@@ -35,26 +40,31 @@ const MyToy = () => {
         });
     }
   };
-
+  // update a toy function
   const updateToy = (data) => {
     console.log(data);
 
-    fetch(`https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys/${data?._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys/${data?._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
           setControl(!control);
+          // sweet alert
           Swal.fire("Updated!", "The toy has been updated.", "success");
         }
         console.log(data);
       });
   };
+  // sort by price in ascending order function default
   const sortByPriceAsc = () => {
     const url = `https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys?email=${user?.email}&sort=asc`;
     fetch(url)
@@ -65,7 +75,7 @@ const MyToy = () => {
         setControl(!control);
       });
   };
-  
+  // sort by price in descending order function default
   const sortByPriceDesc = () => {
     const url = `https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys?email=${user?.email}&sort=desc`;
     fetch(url)
@@ -78,7 +88,7 @@ const MyToy = () => {
   };
   return (
     <div>
-      <PageTitle title="My Toy Page"/>
+      <PageTitle title="My Toy Page" />
       <div
         className="hero min-h-[200px] rounded-md"
         style={{
@@ -95,19 +105,19 @@ const MyToy = () => {
       <div>
         <div className="flex items-center justify-end gap-3 pt-6">
           <p className="font-bold text-2xl">Filter Price: </p>
-        <button
-          className="text-white btn btn-primary hover:underline focus:underline"
-          onClick={sortByPriceAsc}
-        >
-          Ascending
-        </button>
+          <button
+            className="text-white btn btn-primary hover:underline focus:underline"
+            onClick={sortByPriceAsc}
+          >
+            Ascending
+          </button>
 
-        <button
-          className="text-white btn btn-primary hover:underline focus:underline"
-          onClick={sortByPriceDesc}
-        >
-          Descending
-        </button>
+          <button
+            className="text-white btn btn-primary hover:underline focus:underline"
+            onClick={sortByPriceDesc}
+          >
+            Descending
+          </button>
         </div>
       </div>
       <div className="pb-7 pt-3 my-8">
