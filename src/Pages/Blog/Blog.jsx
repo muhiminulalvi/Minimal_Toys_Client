@@ -3,11 +3,11 @@ import PageTitle from "../../shared/PageTitle/PageTitle";
 const Blog = () => {
   return (
     <div>
-      <PageTitle title="Blog Page"/>
-        <div className="text-center text-primary space-y-4 py-14">
-            <h2 className="font-bold text-5xl">Our Blogs</h2>
-            <p className="font-medium">See Our Latest Blogs From The Experts</p>
-        </div>
+      <PageTitle title="Blog Page" />
+      <div className="text-center text-primary space-y-4 py-14">
+        <h2 className="font-bold text-5xl">Our Blogs</h2>
+        <p className="font-medium">See Our Latest Blogs From The Experts</p>
+      </div>
       <div className="my-4 mx-auto">
         <div className="flex flex-col items-start justify-center gap-5 ">
           <div className="bg-primary rounded-md py-5 px-6 h-full font-bold text-white space-y-5">
@@ -140,7 +140,9 @@ const Blog = () => {
             </div>
           </div>
           <div className="bg-primary rounded-md py-5 px-6 h-full font-bold text-white space-y-4">
-            <h2 className="text-3xl">What is MongoDB aggregate and how does it work?</h2>
+            <h2 className="text-3xl">
+              What is MongoDB aggregate and how does it work?
+            </h2>
             <div className="space-y-4">
               <span>Answer:</span>
               <p>
@@ -154,8 +156,19 @@ const Blog = () => {
                 Each stage of the pipeline is run in turn, with the result of
                 one stage acting as the input for the one after that.
               </p>
-              <p>The aggregate method provides a cursor, which can be iterated to retrieve the resulting documents after all pipeline stages have been applied. The aggregated results can also be subjected to further processes, such as pagination or additional data processing.</p>
-              <p>In conclusion, MongoDBs aggregate method offers strong capabilities for data aggregation and analysis, enabling you to draw valuable conclusions from your data by utilizing the expressive and flexible aggregation pipeline.</p>
+              <p>
+                The aggregate method provides a cursor, which can be iterated to
+                retrieve the resulting documents after all pipeline stages have
+                been applied. The aggregated results can also be subjected to
+                further processes, such as pagination or additional data
+                processing.
+              </p>
+              <p>
+                In conclusion, MongoDBs aggregate method offers strong
+                capabilities for data aggregation and analysis, enabling you to
+                draw valuable conclusions from your data by utilizing the
+                expressive and flexible aggregation pipeline.
+              </p>
             </div>
           </div>
         </div>

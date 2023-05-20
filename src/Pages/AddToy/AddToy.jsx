@@ -4,7 +4,6 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 
-
 const AddToy = () => {
   const { user } = useContext(AuthContext);
 
@@ -13,7 +12,6 @@ const AddToy = () => {
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -23,14 +21,18 @@ const AddToy = () => {
       email: user?.email || "",
     };
     console.log(formData);
-    fetch("https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/addtoy", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      "https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/addtoy",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
-        if(result){
+        if (result) {
+          // sweet alert
           Swal.fire({
             title: "Success",
             text: "Toy added successfully",
@@ -46,7 +48,7 @@ const AddToy = () => {
   };
   return (
     <>
-    <PageTitle title="Add Toy Page"/>
+      <PageTitle title="Add Toy Page" />
       <div
         className="hero min-h-[200px] rounded-md"
         style={{
@@ -62,11 +64,15 @@ const AddToy = () => {
       </div>
 
       <div className="py-14 grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-10 py-16 px-8 mx-5 rounded-md shadow-lg bg-primary">
-            <h2 className="text-white font-bold text-3xl text-center">Please Add A Toy!</h2>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-10 py-16 px-8 mx-5 rounded-md shadow-lg bg-primary"
+        >
+          <h2 className="text-white font-bold text-3xl text-center">
+            Please Add A Toy!
+          </h2>
           {errors.exampleRequired && <span>This field is required</span>}
           <div className="flex items-center justify-between gap-4 font-bold">
-            
             <input
               className="input input-bordered w-1/2"
               {...register("toy_name", { required: true })}
@@ -97,7 +103,6 @@ const AddToy = () => {
               placeholder="Seller Email"
               type="email"
               disabled
-              
             />
           </div>
           <div className="flex items-center gap-4 font-bold">
@@ -134,7 +139,11 @@ const AddToy = () => {
             {...register("description")}
             placeholder="Description"
           />
-          <input type="submit" className="btn btn-warning font-bold w-full" value='Add Toy'/>
+          <input
+            type="submit"
+            className="btn btn-warning font-bold w-full"
+            value="Add Toy"
+          />
         </form>
         <div>
           <img

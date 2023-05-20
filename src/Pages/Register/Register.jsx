@@ -15,10 +15,12 @@ const Register = () => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
+    // getting photo url data where the type is url
     const photoURL = form.photoURL.value;
     const password = form.password.value;
     console.log(name, email, photoURL, password);
 
+    // password testing and give errors if password is less than 8 character
     if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
       setError("Password Length should be 8 character");
       return;
@@ -31,6 +33,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        // updating user displayName and photoURL
         updateUser(name, photoURL)
           .then(() => {
             navigate(from, {replace: true})
