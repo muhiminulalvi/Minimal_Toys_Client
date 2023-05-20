@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import MyToyDetails from "../MyToyDetails/MyToyDetails";
+import Swal from 'sweetalert2';
+
 
 
 const MyToy = () => {
@@ -26,7 +28,7 @@ const MyToy = () => {
             .then(data => {
                 console.log(data)
                 if(data.deletedCount > 0){
-                    alert("Deleted Successfully.")
+                  Swal.fire('Deleted!', 'The toy has been deleted.', 'success');
                     const remaining = myToys.filter(myToy => myToy._id !== id)
                     setMyToys(remaining)
                 }
@@ -49,19 +51,9 @@ const MyToy = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     setControl(!control);
+                    Swal.fire('Updated!', 'The toy has been updated.', 'success');
                   }
                 console.log(data);})
-        //         if(data.modifiedCount > 0){
-        //             alert("Modified Successfully")
-        //             const remaining = myToys.filter(myToy => myToy._id !== id)
-        //             const updatedToy = myToys.find(myToy => myToy._id === id)
-        //             updateToy.status = 'update'
-        //             const newToys = [updatedToy, ...remaining]
-
-        //             setMyToys(newToys)
-        //         }
-        //     })
-            
 
       }
     return (
