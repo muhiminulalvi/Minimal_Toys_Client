@@ -53,7 +53,7 @@ const AvailableToy = () => {
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center gap-y-6">
-        {toys.map((toy) => (
+        {toys.slice(0,3).map((toy) => (
           <ToyCard toy={toy} key={toy._id}></ToyCard>
         ))}
       </div>

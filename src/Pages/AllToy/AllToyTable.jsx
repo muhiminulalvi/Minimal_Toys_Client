@@ -1,10 +1,11 @@
 
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const AllToyTable = ({ toy, index }) => {
   const { user } = useContext(AuthContext);
-  const { toy_name, category, seller_name, price, quantity } = toy || {};
+  const { _id,toy_name, category, seller_name, price, quantity } = toy || {};
   return (
     <tbody>
       {/* row 1 */}
@@ -23,7 +24,7 @@ const AllToyTable = ({ toy, index }) => {
         <td>${price}</td>
         <td>{quantity}</td>
         <td>
-          <button className="btn btn-primary text-white font-bold">details</button>
+          <Link to={`/toys/${_id}`}><button className="btn btn-primary text-white font-bold">details</button></Link>
         </td>
       </tr>
     </tbody>
