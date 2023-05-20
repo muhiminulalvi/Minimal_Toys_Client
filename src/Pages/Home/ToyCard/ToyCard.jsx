@@ -13,12 +13,6 @@ const ToyCard = ({ toy }) => {
       // User is logged in, proceed to view details
       toast.info("You have to login to view", {
         position: toast.POSITION.TOP_RIGHT,
-        autoClose: 5000,
-        onClose: () => {
-          setTimeout(() => {
-            window.location.href = `/login`; // Redirect to login page
-          }, 5000);
-        },
       })
     } 
   };
