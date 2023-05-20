@@ -42,6 +42,12 @@ const Header = () => {
               <Link to="/alltoy">All Toys</Link>
             </li>
             <li>
+              <Link to="/mytoys">My Toys</Link>
+            </li>
+            <li>
+              <Link to="/addtoy">Add A Toy</Link>
+            </li>
+            <li>
               <Link to="/blog">Blog</Link>
             </li>
           </ul>
@@ -61,18 +67,13 @@ const Header = () => {
           <li>
             <Link to="/alltoy">All Toys</Link>
           </li>
-          {user ? (
-            <div className="flex">
-              <li>
-                <Link to="/mytoys">My Toys</Link>
-              </li>
-              <li>
-                <Link to="/addtoy">Add A Toy</Link>
-              </li>
-            </div>
-          ) : (
-            <></>
-          )}
+          <li>
+            <Link to="/mytoys">My Toys</Link>
+          </li>
+          <li>
+            <Link to="/addtoy">Add A Toy</Link>
+          </li>
+
           <li>
             <Link to="/blog">Blog</Link>
           </li>
@@ -87,13 +88,20 @@ const Header = () => {
             >
               <div className="w-10 ">
                 {user.photoURL ? (
-                  <img src={`${user?.photoURL}`} alt="" className="rounded-full" />
+                  <img
+                    src={`${user?.photoURL}`}
+                    alt=""
+                    className="rounded-full"
+                  />
                 ) : (
-                  <FaUserShield size={30} color="#ff3811"/>
+                  <FaUserShield size={30} color="#ff3811" />
                 )}
               </div>
             </label>
-            <button className="btn btn-primary text-white font-bold" onClick={handleLogOut}>
+            <button
+              className="btn btn-primary text-white font-bold"
+              onClick={handleLogOut}
+            >
               Log Out
             </button>
           </div>

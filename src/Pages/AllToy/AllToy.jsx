@@ -8,7 +8,7 @@ const AllToy = () => {
   const [allToy, setAllToy] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("http://localhost:5000/toys?limit=20")
       .then((res) => res.json())
       .then((data) => setAllToy(data));
   }, []);

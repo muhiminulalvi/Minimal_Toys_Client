@@ -11,9 +11,7 @@ const ToyCard = ({ toy }) => {
   const handleViewDetails = () => {
     if (!user) {
       // User is logged in, proceed to view details
-      toast.info("You have to login to view", {
-        position: toast.POSITION.TOP_RIGHT,
-      })
+      alert("You have to login to view details.")
     } 
   };
   return (

@@ -1,12 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import RegisterBanner from '../../assets/toy123.svg'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const {logIn, googleLogIn} = useContext(AuthContext)
+    const [error, setError] = useState("")
     const googleAuth = new GoogleAuthProvider()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogIn = (event) =>{
         event.preventDefault()
@@ -19,8 +23,13 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            navigate(from, {replace: true})
+            setError("")
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          console.log(err)
+          setError("Insert right email or password")
+        })
     }
 
     const clickGoogle = () =>{
@@ -28,10 +37,13 @@ const Login = () => {
         .then(result => {
           const loggedUser = result.user;
           console.log(loggedUser);
+          navigate(from, {replace: true})
+          setError("")
 
         })
         .catch(err => {
           console.log(err.message);
+          setError("Please try again.")
         })
       }
 
@@ -97,6 +109,9 @@ const Login = () => {
           </div>
           <div className='py-3 px-5 text-center text-white font-bold'>
             <h1>New to Minimal Toys? <Link to='/register'>Register Now!</Link></h1>
+          </div>
+          <div>
+          <p className="text-white font-bold text-center text-xl">{error}</p>
           </div>
         </div>
       </div>
