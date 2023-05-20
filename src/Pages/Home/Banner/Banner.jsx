@@ -1,6 +1,6 @@
 const Banner = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center px-8">
       <div>
         <div className="max-w-lg">
           <h1 className="mb-5 text-5xl font-bold">The Minimal Toys</h1>
