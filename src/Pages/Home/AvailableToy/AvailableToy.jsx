@@ -6,7 +6,7 @@ const AvailableToy = () => {
   const [openTab, setOpenTab] = useState("regular");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/categoryToys/${openTab}`)
+    fetch(`https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/categoryToys/${openTab}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);

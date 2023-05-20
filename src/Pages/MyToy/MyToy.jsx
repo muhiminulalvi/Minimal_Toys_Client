@@ -10,7 +10,7 @@ const MyToy = () => {
   const [control, setControl] = useState(false);
   const [sortOrder, setSortOrder] = useState("asc");
 
-  const url = `http://localhost:5000/myToys?email=${user?.email}&sort=${sortOrder}`;
+  const url = `https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys?email=${user?.email}&sort=${sortOrder}`;
 
   useEffect(() => {
     fetch(url)
@@ -21,7 +21,7 @@ const MyToy = () => {
   const deleteToy = (id) => {
     const proceed = confirm("Want to delete?");
     if (proceed) {
-      fetch(`http://localhost:5000/myToys/${id}`, {
+      fetch(`https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -39,7 +39,7 @@ const MyToy = () => {
   const updateToy = (data) => {
     console.log(data);
 
-    fetch(`http://localhost:5000/myToys/${data?._id}`, {
+    fetch(`https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys/${data?._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -56,7 +56,7 @@ const MyToy = () => {
       });
   };
   const sortByPriceAsc = () => {
-    const url = `http://localhost:5000/myToys?email=${user?.email}&sort=asc`;
+    const url = `https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys?email=${user?.email}&sort=asc`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -67,7 +67,7 @@ const MyToy = () => {
   };
   
   const sortByPriceDesc = () => {
-    const url = `http://localhost:5000/myToys?email=${user?.email}&sort=desc`;
+    const url = `https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/myToys?email=${user?.email}&sort=desc`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

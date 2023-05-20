@@ -1,31 +1,32 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
 import AllToyTable from "./AllToyTable";
 import PageTitle from "../../shared/PageTitle/PageTitle";
+import { useEffect, useState } from "react";
 
 const AllToy = () => {
-  const { user } = useContext(AuthContext);
-  const [searchToyName, setSearchToyName] = useState("");
+  const [searchingToyName, set_SearchToy_Name] = useState("");
   const [allToy, setAllToy] = useState([]);
+  const [filteredToy, setFilteredToy] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys?limit=20")
+    fetch(
+      "https://b7a11-toy-marketplace-server-side-muhiminulalvi.vercel.app/toys?limit=20"
+    )
       .then((res) => res.json())
-      .then((data) => setAllToy(data));
+      .then((data) => {
+        setAllToy(data);
+        setFilteredToy(data);
+      });
   }, []);
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getToysByText/${searchToyName}`)
-      .then((res) => res.json())
-      .then((data) => {
-        
-        setAllToy(data);
-      });
+    const searchedToy = allToy.filter((toy) =>
+      toy.toy_name.toLowerCase().includes(searchingToyName.toLowerCase()));
+    setFilteredToy(searchedToy);
   };
 
   return (
     <div className="space-y-8">
-      <PageTitle title="All Toy"/>
+      <PageTitle title="All Toy" />
       <div
         className="hero min-h-[200px] rounded-md w-3/4 mx-auto"
         style={{
@@ -40,14 +41,17 @@ const AllToy = () => {
         </div>
       </div>
       <div className="py-7 my-8">
-      <div className="search-box p-2 text-center">
+        <div className="search-box p-2 text-center">
           <input
-            onChange={(e) => setSearchToyName(e.target.value)}
             type="text"
             placeholder="Search Toy Name"
+            value={searchingToyName}
+            onChange={(e) => set_SearchToy_Name(e.target.value)}
             className="input input-bordered font-bold"
           />{" "}
-          <button onClick={handleSearch} className="btn btn-primary text-white">Search</button>
+          <button onClick={handleSearch} className="btn btn-primary text-white">
+            Search
+          </button>
         </div>
         <table className="table-normal mx-auto w-3/4 ">
           <thead className="text-white font-bold text-2xl bg-primary text-left">
@@ -62,7 +66,7 @@ const AllToy = () => {
             </tr>
           </thead>
 
-          {allToy.map((toy, index) => (
+          {filteredToy.map((toy, index) => (
             <AllToyTable key={toy._id} toy={toy} index={index}></AllToyTable>
           ))}
         </table>

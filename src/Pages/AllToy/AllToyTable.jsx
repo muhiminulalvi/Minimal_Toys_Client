@@ -2,8 +2,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
-import { toast, ToastContainer  } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const AllToyTable = ({ toy, index }) => {
   const { user } = useContext(AuthContext);
