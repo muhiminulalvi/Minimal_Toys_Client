@@ -91,7 +91,7 @@ const Header = () => {
                   <img
                     src={`${user?.photoURL}`}
                     alt=""
-                    className="rounded-full"
+                    className="rounded-full w-10"
                   />
                 ) : (
                   <FaUserShield size={30} color="#ff3811" />
