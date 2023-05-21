@@ -104,7 +104,7 @@ const MyToy = () => {
       </div>
       <div>
         <div className="flex items-center justify-end gap-3 pt-6">
-          <p className="font-bold text-2xl">Filter Price: </p>
+          <p className="font-bold text-2xl">Sort Price: </p>
           <button
             className="text-white btn btn-primary hover:underline focus:underline"
             onClick={sortByPriceAsc}
